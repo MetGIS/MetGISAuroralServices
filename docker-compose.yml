@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  webserver:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./staticfiles:/staticfiles
+    environment:
+      - API_KEY=
