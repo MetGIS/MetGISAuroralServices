@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <script src="https://unpkg.com/maplibre-gl@^5.1.0/dist/maplibre-gl.js"></script>
     <link href="https://unpkg.com/maplibre-gl@^5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
@@ -10,9 +11,23 @@
     <div id="map" style="width: 100vw; height: 100vh; position: absolute; top: 0; left: 0;"></div>
     <button id="openModal" class="absolute top-3 right-12 bg-white px-3 py-1 text-sm rounded">I</button>
     <div id="modal" class="fixed inset-0 flex items-center justify-center hidden">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 class="text-lg font-semibold mb-4">Title</h2>
-            <p class="text-gray-600">Text</p>
+        <div class="bg-white p-6 rounded-lg shadow-lg w-lg">
+            <h2 class="text-lg font-semibold mb-4">Using the 3d-visualization feature:</h2>
+            <p class="text-gray-600">
+            <ul class="list-disc">
+                <li class="mt-2">
+                    First of all, klick the Enable Terrain-Button (Peak Symbol)
+                </li>
+                <li class="mt-4">
+                    Klick and hold the right button of the mouse, then move the mouse
+                    around to tilt the map. By this you can set the terrain viewing angle
+                    and direction.
+                </li>
+                <li class="mt-4">
+                    Zoom in and out, using the relevant control elements or the mousewheel.
+                </li>    
+            </ul>
+            </p>
             <div class="mt-4 flex justify-end">
                 <button id="closeModal" class="bg-blue-500 text-white px-4 py-2 rounded">Close</button>
             </div>
@@ -20,12 +35,12 @@
     </div>
     <div class="flex justify-center">
         <div class="w-1/6 h-24 bg-gray-400 opacity-80 mt-4">
-            <h3 class="mx-auto text-center text-2xl">Snow Map</h3>            
+            <h3 class="mx-auto text-center text-2xl">Snow Map</h3>
         </div>
     </div>
     <script>
         const map = new maplibregl.Map({
-            container: 'map', 
+            container: 'map',
             style: {
                 version: 8,
                 sources: {
@@ -90,7 +105,7 @@
                         minzoom: 1,
                         maxzoom: 20
                     },
-                    {"id":"snow_cover","type":"fill","source":"snowcower","source-layer":"snow","paint":{"fill-color":"#0099FF","fill-opacity":0.8,"fill-outline-color":"rgba(0, 0, 0, 1)"}},
+                    { "id": "snow_cover", "type": "fill", "source": "snowcower", "source-layer": "snow", "paint": { "fill-color": "#0099FF", "fill-opacity": 0.8, "fill-outline-color": "rgba(0, 0, 0, 1)" } },
                     {
                         id: 'hills',
                         type: 'hillshade',
@@ -479,8 +494,8 @@
                 ],
                 glyphs: 'https://osm-tiles.metgis.com/fonts/{fontstack}/{range}.pbf',
                 maxZoom: 14
-            }, 
-            center: [14, 47], 
+            },
+            center: [14, 47],
             zoom: 7
         });
         map.on('load', () => {
@@ -505,10 +520,11 @@
         openModal.addEventListener('click', () => {
             modal.classList.remove('hidden');
         });
-        
+
         closeModal.addEventListener('click', () => {
             modal.classList.add('hidden');
         });
     </script>
 </body>
+
 </html>
